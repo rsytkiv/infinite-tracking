@@ -1,20 +1,20 @@
 name: Deploy Bot to Server and start
 
+# on:
+#   pull_request:
+#     branches:
+#       - master
+
 on:
   pull_request:
+    types:
+      - closed
     branches:
       - main
 
-# on:
-#   pull_request:
-#     types:
-#       - closed
-#     branches:
-#       - main
-
 jobs:
   deploy:
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: self-hosted
     steps:
       - name: Checkout repository
@@ -38,7 +38,11 @@ jobs:
           cd runner
           echo "TELEGRAM_BOT_KEY=${{ secrets.TELEGRAM_BOT_KEY }}" >> .env
 
-      - name: Restart Telegram bot
+      - name: Kill existing bot process
+        run: |
+          pm2 delete bot || true
+
+      - name: Start Telegram bot
         run: |
           cd runner
-          nodemon /index.js --name bot
+          pm2 start index.js --name bot
