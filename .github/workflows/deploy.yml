@@ -39,9 +39,9 @@ jobs:
 
       - name: Kill existing bot process
         run: |
-          pkill -f "node index.js" || true
+          pm2 delete bot || true
 
       - name: Start Telegram bot
         run: |
           cd runner
-          nohup node index.js > output.log 2>&1 &
+          pm2 start index.js --name bot
