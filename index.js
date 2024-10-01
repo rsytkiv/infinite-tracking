@@ -37,7 +37,7 @@ bot.onText(/\/start/, withAuthorization(async ({ chat }) => {
         reply_markup: {
             inline_keyboard: [
                 [
-                    { text: '💳 Wallets tracking', callback_data: 'wallets_tracking' },
+                    { text: '💳 Wallets trackingh', callback_data: 'wallets_tracking' },
                     { text: '💳 Currencies', callback_data: 'currencies_tracking' },
                     { text: '🪙 Tokens', callback_data: 'button2' }
                 ]
