@@ -37,7 +37,11 @@ jobs:
           cd runner
           echo "TELEGRAM_BOT_KEY=${{ secrets.TELEGRAM_BOT_KEY }}" >> .env
 
-      - name: Restart Telegram bot
+      - name: Kill existing bot process
+        run: |
+          pkill -f "node index.js" || true
+
+      - name: Start Telegram bot
         run: |
           cd runner
-          nodemon index.js --name bot &
+          nohup nodemon index.js --name bot > bot.log 2>&1 &
