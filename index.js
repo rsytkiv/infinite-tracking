@@ -39,7 +39,7 @@ bot.onText(/\/start/, withAuthorization(async ({ chat }) => {
                 [
                     { text: '💳 Wallets tracking', callback_data: 'wallets_tracking' },
                     { text: '💳 Currencies', callback_data: 'currencies_tracking' },
-                    { text: '🛠️ Something else...', callback_data: 'button2' }
+                    { text: '🪙 Tokens', callback_data: 'button2' }
                 ]
             ]
         }
