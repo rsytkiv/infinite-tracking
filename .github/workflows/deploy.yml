@@ -1,0 +1,44 @@
+name: Deploy Bot to Server and start
+
+on:
+  pull_request:
+    branches:
+      - main
+
+# on:
+#   pull_request:
+#     types:
+#       - closed
+#     branches:
+#       - main
+
+jobs:
+  deploy:
+    # if: github.event.pull_request.merged == true
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          path: runner
+
+      - name: Pull latest changes on the server
+        run: |
+          cd runner
+          git fetch origin
+          git reset --hard origin/master
+
+      - name: Install dependencies
+        run: |
+          cd runner
+          npm install
+
+      - name: Set environment variables
+        run: |
+          cd runner
+          echo "TELEGRAM_BOT_KEY=${{ secrets.TELEGRAM_BOT_KEY }}" >> .env
+
+      - name: Restart Telegram bot
+        run: |
+          cd runner
+          nodemon /index.js --name bot
