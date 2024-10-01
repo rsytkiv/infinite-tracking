@@ -44,5 +44,4 @@ jobs:
       - name: Start Telegram bot
         run: |
           cd runner
-          nodemon index.js
-          disown
+          nohup node your_script.js > output.log 2>&1 &
