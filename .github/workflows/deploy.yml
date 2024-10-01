@@ -11,7 +11,6 @@ on:
 #       - closed
 #     branches:
 #       - main
-
 jobs:
   deploy:
     # if: github.event.pull_request.merged == true
@@ -41,4 +40,4 @@ jobs:
       - name: Restart Telegram bot
         run: |
           cd runner
-          nodemon /index.js --name bot
+          nodemon index.js --name bot &
