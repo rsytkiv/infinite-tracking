@@ -3,7 +3,7 @@ name: Deploy Bot to Server and start
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 # on:
 #   pull_request:
