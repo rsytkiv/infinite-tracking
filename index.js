@@ -47,7 +47,6 @@ bot.onText(/\/start/, withAuthorization(async ({ chat }) => {
 
     bot.sendMessage(chat.id, '⬇️ Choose an option', options);
 
-    // Example usage
     const address = '0xbdcd88b1967b6e0e47df420e5882286776e74afb'; // Replace with your actual Ethereum/Arbitrum address
 
     getTokenTransactions(address)
