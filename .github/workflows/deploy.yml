@@ -16,6 +16,8 @@ jobs:
   deploy:
     if: github.event.pull_request.merged == true
     runs-on: self-hosted
+    env:
+      TELEGRAM_BOT_KEY: ${{ secrets.TELEGRAM_BOT_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
