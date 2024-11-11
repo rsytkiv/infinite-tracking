@@ -1,10 +1,11 @@
-const { default: axios } = require('axios');
+import { config } from 'dotenv';
+import { default as axios } from 'axios';
 
-require('dotenv').config();
+config();
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_KEY;
 
-async function getTokenTransactions(address) {
+export const getTokenTransactions = async (address) => {
     const networks = [
         { name: 'Ethereum', baseURL: 'https://api.etherscan.io/api' },
         { name: 'Arbitrum', baseURL: 'https://api.arbiscan.io/api' }
@@ -39,6 +40,4 @@ async function getTokenTransactions(address) {
     const results = await Promise.all(transactionPromises);
 
     return results;
-}
-
-module.exports = { getTokenTransactions };
+};

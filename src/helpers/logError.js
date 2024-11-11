@@ -9,7 +9,7 @@ const sendBotErrorMessage = (chatId, error, bot) => {
 
 // Function to ensure the logs directory exists
 const ensureLogsDirectory = () => {
-    const logsDir = path.join(__dirname, '..', 'logs'); // Adjust the path as needed
+    const logsDir = path.join(__dirname, '..', 'logs');
     if (!fs.existsSync(logsDir)) {
         fs.mkdirSync(logsDir, { recursive: true });
     }
