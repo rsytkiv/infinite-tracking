@@ -1,10 +1,5 @@
 name: Deploy Bot to Server and start
 
-# on:
-#   pull_request:
-#     branches:
-#       - master
-
 on:
   pull_request:
     types:
@@ -48,3 +43,14 @@ jobs:
         run: |
           cd runner
           pm2 start index.js --name bot
+          # Check if the bot is running
+          pm2 status bot
+
+      - name: Verify if the bot is running
+        run: |
+          pm2 status bot || (echo "Bot failed to start" && exit 1)
+          echo "Bot is running successfully"
+
+      - name: Check logs for any errors
+        run: |
+          pm2 logs bot --lines 100
