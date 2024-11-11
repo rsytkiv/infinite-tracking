@@ -1,13 +1,5 @@
-const ADMIN_USER_ID = '458215124';
-const AUTHORIZED_USERS = ['458215124'];
-const DEFAULT_EXCHANGES = ['binance', 'bybit'];
-const PRICE_CHANGE_THRESHOLD = 10;
-const DEFAULT_PAIRS = ['USDT', 'USDC'];
-
-module.exports = {
-    ADMIN_USER_ID,
-    AUTHORIZED_USERS,
-    DEFAULT_EXCHANGES,
-    PRICE_CHANGE_THRESHOLD,
-    DEFAULT_PAIRS,
-};
+export const ADMIN_USER_ID = '458215124';
+export const AUTHORIZED_USERS = ['458215124'];
+export const DEFAULT_EXCHANGES = ['binance', 'bybit'];
+export const PRICE_CHANGE_THRESHOLD = 10;
+export const DEFAULT_PAIRS = ['USDT', 'USDC'];
